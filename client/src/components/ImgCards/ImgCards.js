@@ -6,16 +6,16 @@ const ImgCards = () => {
   return (
     <>
       <section className="Img-section">
-        <div className="img-wrapper">
+        <div className="Img-wrapper">
           <img src={Big_img} alt="img" />
         </div>
-        <div className="img-wrapper">
-          <div className="cards">
+        <div className="Img-wrapper">
+          <div className="Cards">
             {cards?.map((card, i) => {
               return (
-                <div className="card" key={i}>
+                <div className="Card" key={i}>
                   <img src={card.image} alt="Card" />
-                  <div className="text-container">
+                  <div className="Text-container">
                     <h3>{card.text}</h3>
                   </div>
                 </div>

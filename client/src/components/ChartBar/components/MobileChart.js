@@ -17,7 +17,7 @@ const renderActiveShape = (props) => {
   return (
     <g>
       <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-        {`${payload.time}:00 - ${temperature.toFixed(2)}°`}
+        {`${payload.time}:00 - ${temperature.toFixed(0)}°`}
       </text>
       <Sector
         cx={cx}
@@ -41,9 +41,9 @@ const renderActiveShape = (props) => {
   )
 }
 
-const MobileChart = (props) => {
+const MobileChart = ({arr, unit}) => {
   const [activeIndex, setActiveIndex] = useState(0)
-  const arr = props.props
+  const setUnit = unit === 'celsius' ? `°C` : `°F`
 
   //Click handling
   const onPieEnter = useCallback(
@@ -56,11 +56,11 @@ const MobileChart = (props) => {
   //Average temperature inside
   const avg = (
     arr.reduce((r, t) => r + t.temperature, 0) / (arr.length || 1)
-  ).toFixed(2)
+  ).toFixed(0)
 
   return (
-    <div className="ChartBar-main">
-      <section>
+    <>
+      <section className="Chart-cont">
         <PieChart width={400} height={400}>
           <Pie
             activeIndex={activeIndex}
@@ -76,14 +76,15 @@ const MobileChart = (props) => {
           />
         </PieChart>
       </section>
-      <p className="content">
+      <p className="Content">
         Average{' '}
         <i>
           <b>t</b>
         </i>{' '}
-        today: {avg}°
+        today: {avg}
+        {setUnit}
       </p>
-    </div>
+    </>
   )
 }
 export default MobileChart

@@ -20,11 +20,3 @@ const schema = buildSchema(`
 `)
 
 module.exports = schema
-
-// type Me{
-//     home(id: ID):Home
-// }
-
-// type Home{
-//     weather: Weather
-// }

@@ -1,13 +1,16 @@
+@font-face {
+   font-family: "Silka";
+   src: url(https://assets.ctfassets.net/zq85bj8o2ot3/yNFXCSIOWWBDMZZz4PNuG/949818f745f1ed767fa2cc5f9623832d/silka-semibold.ttf);
+}
+
 body {
   margin: 0;
   background: #E5E5E5;
-
 }
 
 .App {
   display: flex;
   flex-direction: column;
-  /* text-align: center; */
   color: rgb(14, 12, 12);
   width: 100%;
 }
@@ -32,6 +35,24 @@ body {
   display: flex;  
   flex-flow: row wrap;
 }
+.ChartBar-main h5, h2{
+  display: flex;
+  justify-content: center;
+  color: #E5E5E5;
+  font-family: 'Silka';
+}
+
+.ChartBar-main h5{
+  font-size: 17px;
+  font-family: 'Silka';
+  margin: 40px 0 5px 0;
+  width: 100%;
+}
+
+.ChartBar-main h2{
+  font-size: 40px;
+  font-family: 'Silka';
+}
 
 .ChartBar-main section{
   flex: 1 100%;
@@ -41,6 +62,7 @@ body {
   display: flex;  
   padding-top: 8px;
   font-size: 27px;
+  font-family: 'Silka';
   justify-content: center;
 }
 
@@ -55,19 +77,20 @@ body {
   color: #fefffc;
   margin: 15px;
   font-size: 27px;
+  font-family: 'Silka';
 }
 
-.content {
+.Content {
   color: #fefffc;
   margin: 15px;
 }
 
-.btns {
+.Btns {
   display: flex;
   justify-content: center;
 }
 
-.btn-1, .btn-2 {
+.Btn-1, .Btn-2 {
   margin: 20px 4px 20px 4px;
   width: 176px;
   height: 34.33px;
@@ -77,21 +100,22 @@ body {
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
+  font-family: 'Silka';
   line-height: 17px;
   cursor: pointer;
 }
 
-.btn-1:hover, .btn-2:hover {
+.Btn-1:hover, .Btn-2:hover {
 	opacity: 0.5;
 }
 
-.btn-1 {
+.Btn-1 {
   background: #23B8CC;
   color: #FFFFFF;
   border: none;
 }
 
-.btn-2 {
+.Btn-2 {
   background: #FFFFFF;
   border: 1px solid #4A4A4A;
   color: #4A4A4A;
@@ -111,25 +135,24 @@ body {
 
 .Img-section {
   display: flex;
-  /* flex-wrap: wrap; */
   flex-flow: row wrap;
   justify-content: center;
   margin: 50px 90px 50px 90px;
 }
 
-.img-wrapper {
+.Img-wrapper {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   padding: 20px 10px 20px 10px;
 }
 
-.cards {
+.Cards {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
 }
-.card {
+.Card {
   width: 281px;
   height: 395px;
   background: #FFFCFC;
@@ -137,19 +160,18 @@ body {
 
 } 
 
-.card img{
+.Card img{
   display: flex;
   width: 100%;
 }
 
-.text-container {
+.Text-container {
   display: flex;
   justify-content: flex-start;
   margin-left: 10px; 
-    
 
 }
-.text-container h3{
+.Text-container h3{
   font-family: 'Silka';
   font-style: normal;
   font-weight: 600;
@@ -170,6 +192,7 @@ h1 {
   font-size: 36px;
   line-height: 43px;
   color: #000000;
+  font-family: 'Silka';
 }
 
 p {
@@ -199,12 +222,12 @@ p {
   
   .ChartBar-main section {
     justify-content: center;
+    width: 100%;
+
   }
   .ChartBar-main p {
     font-size: 17px;
   }
-
-
 
   .ChartBar {
     align-self: center;
@@ -213,7 +236,7 @@ p {
     height: 100%;
   }
 
-  .btn-1, .btn-2 {
+  .Btn-1, .Btn-2 {
     margin: 40px 10px 40px 10px;
     width: 100px;
     height: 50px;
@@ -223,23 +246,23 @@ p {
     margin: 14px 20px 14px 20px;
   }
 
-  .img-wrapper img{
+  .Img-wrapper img{
     max-width: 100%;
   }
 
-  .cards {
+  .Cards {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
   }
 
-  .card {
+  .Card {
     width: 250px;
     height: 350px;
     margin: 10px;
   } 
 
-  .text-container h3{
+  .Text-container h3{
     font-size: 16px;
     margin: 10px;
   }

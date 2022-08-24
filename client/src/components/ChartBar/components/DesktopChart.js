@@ -1,9 +1,9 @@
 import {useState, useCallback} from 'react'
 import {BarChart, Bar, Cell, ResponsiveContainer} from 'recharts'
 
-const DesktopChart = (props) => {
+const DesktopChart = ({arr, unit}) => {
   const [activeIndex, setActiveIndex] = useState(0)
-  const arr = props.props
+  const setUnit = unit === 'celsius' ? `°C` : `°F`
 
   const handleClick = useCallback(
     (_, index) => {
@@ -16,19 +16,23 @@ const DesktopChart = (props) => {
   //Average temperature inside
   const avg = (
     arr.reduce((r, t) => r + t.temperature, 0) / (arr.length || 1)
-  ).toFixed(2)
+  ).toFixed(0)
 
   return (
     <div className="ChartBar-main">
+      <h5 className="Avarage-temp">Average temperature</h5>
       <section className="Chart-cont">
-        <p className="content">Average {avg}°</p>
-        <ResponsiveContainer width="99%" height="77%">
+        <h2 className="Content">
+          {avg}
+          {setUnit}
+        </h2>
+        <ResponsiveContainer width="99%" height="72%">
           <BarChart
             data={arr}
             margin={{
-              top: 60,
+              top: 30,
               right: 15,
-              bottom: 0,
+              bottom: 20,
               left: 20,
             }}
           >
@@ -43,9 +47,9 @@ const DesktopChart = (props) => {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
-        <p className="content">{`${
+        <p className="Content">{`${
           activeItem.time
-        }:00 - ${activeItem.temperature.toFixed(2)}°`}</p>
+        }:00 - ${activeItem.temperature.toFixed(0)}${setUnit}`}</p>
       </section>
     </div>
   )

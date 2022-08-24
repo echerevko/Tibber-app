@@ -1,6 +1,8 @@
-import {useState} from 'react'
+import {useState, Fragment} from 'react'
 import DesktopChart from './components/DesktopChart'
 import MobileChart from './components/MobileChart'
+import Button from './components/Button'
+import UnitIndicator from './components/UnitIndicator'
 import {useWindowResize, useThrottledCallback} from 'beautiful-react-hooks'
 import {TABLET_WIDTH_SIZE} from '../../assets/shared/constants'
 import {useQuery} from '@apollo/client'
@@ -21,18 +23,18 @@ const ChartBar = () => {
 
   //server data processing
   const arr = data?.getWeather?.entries.map((entry) => ({
-    ...entry,
     time:
       typeof entry.time === 'string' ? entry.time.substr(11, 2) : entry.time,
+    temperature: Math.round(entry.temperature),
   }))
+
   if (loading) {
     return <h1>Loading...</h1>
   }
   if (error) return `Error! ${error.message}`
 
-  //handle the submission to F
-  const showFahrenheit = (e) => {
-    e.preventDefault()
+  //handle submission to F
+  const showFahrenheit = () => {
     setUnit('fahrenheit')
     toFahrenheit()
   }
@@ -40,34 +42,37 @@ const ChartBar = () => {
   function toFahrenheit() {
     const fahrenheits = arr.map((entry) => ({
       ...entry,
-      temperature: (entry.temperature * 9) / 5 + 32,
+      temperature: Math.round((entry.temperature * 9) / 5 + 32), //to fahrenheit
     }))
     return fahrenheits
   }
 
-  //handle the submission to C
-  const showCelsius = (e) => {
-    e.preventDefault()
+  //handle submission to C
+  const showCelsius = () => {
     setUnit('celsius')
   }
 
   return (
     <div className="ChartBar-main">
       <section className="ChartBar">
-        <p id="Unit">{unit === 'celsius' ? `°C` : `°F`}</p>
         {width >= TABLET_WIDTH_SIZE ? (
-          <DesktopChart props={unit === 'celsius' ? arr : toFahrenheit()} />
+          <DesktopChart
+            arr={unit === 'celsius' ? arr : toFahrenheit()}
+            unit={unit}
+          />
         ) : (
-          <MobileChart props={unit === 'celsius' ? arr : toFahrenheit()} />
+          <Fragment>
+            <UnitIndicator unit={unit} />
+            <MobileChart
+              arr={unit === 'celsius' ? arr : toFahrenheit()}
+              unit={unit}
+            />
+          </Fragment>
         )}
       </section>
-      <section className="btns">
-        <button className="btn-1" onClick={(e) => showFahrenheit(e)}>
-          show ℉
-        </button>
-        <button className="btn-2" onClick={(e) => showCelsius(e)}>
-          ReSET
-        </button>
+      <section className="Btns">
+        <Button transformUnit={showFahrenheit} unit={'fahrenheit'} />
+        <Button transformUnit={showCelsius} unit={'celsius'} />
       </section>
     </div>
   )
