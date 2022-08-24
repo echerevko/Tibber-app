@@ -68,6 +68,7 @@ server/
 ### UI:
 
 - built responsively for mobile version (425 px), for tablet and laptop
+- I tried to repeat the figma design as much as possible in static content
 
 ### CSS:
 
@@ -80,19 +81,16 @@ server/
 - In the mobile version, we have a chart wheel, where we can also scroll through the time with our finger during the day and view the temperature
 - For the buttons, I made a switch to fahrenheit temperature and added unit indicators
 
-### I tried to repeat the figma design as much as possible in static content
-
 ## Client side: REACT
 
 - for the state management of the application and for implementation of the app I used modern React, I also connected an additional library of beautiful-react-hooks
-
 - I tried to distribute the code between different components as much as possible to make it easier to write unit tests
 
 ## Server side
 
-### initially, when your api did not work, I created my own api similar to yours
+- Initially, when your api did not work, I created my own api similar to yours
 
-### later, when everything worked, I had to rebuild the server side as follows:
+### Later, when everything worked, I had to rebuild the server side as follows:
 
 - since we do not have authentication on the client, we carry it out on the server side
 - subsequently, authentication and we get a token
