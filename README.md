@@ -65,15 +65,20 @@ server/
 
 ## Client side: styles, UI, UX
 
-### UI built responsively for mobile version (425 px), for tablet and laptop
+### UI:
 
-### the app used regular CSS for styling and the charts.js for charts
+- built responsively for mobile version (425 px), for tablet and laptop
 
-### while building UX, I deviated from the requirements and built the dynamic content(charts) the way I see it as a user
+### CSS:
 
-- in laptop and tablet versions, you can click on the chart items and view the specific temperature at a specific time
-- in the mobile version, we have a chart wheel, where we can also scroll through the time with our finger during the day and view the temperature
-- for the buttons, I made a switch to fahrenheit temperature and added unit indicators
+- the app used regular CSS for styling and the charts.js for charts
+
+### UX:
+
+- I deviated from the requirements and built the dynamic content(charts) the way I see it as a user
+- In laptop and tablet versions, you can click on the chart items and view the specific temperature at a specific time
+- In the mobile version, we have a chart wheel, where we can also scroll through the time with our finger during the day and view the temperature
+- For the buttons, I made a switch to fahrenheit temperature and added unit indicators
 
 ### I tried to repeat the figma design as much as possible in static content
 
