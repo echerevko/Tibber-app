@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react'
+import React, {useCallback, useState, useMemo} from 'react'
 import {PieChart, Pie, Sector} from 'recharts'
 
 //Customized chart element for mobile version with dynamic data display
@@ -43,6 +43,11 @@ const renderActiveShape = (props) => {
 
 const MobileChart = ({arr, unit}) => {
   const [activeIndex, setActiveIndex] = useState(0)
+  const avg = useMemo(() => {
+    return (
+      arr.reduce((r, t) => r + t.temperature, 0) / (arr.length || 1)
+    ).toFixed(0) //Average temperature inside
+  })
   const setUnit = unit === 'celsius' ? `°C` : `°F`
 
   //Click handling
@@ -52,11 +57,6 @@ const MobileChart = ({arr, unit}) => {
     },
     [setActiveIndex]
   )
-
-  //Average temperature inside
-  const avg = (
-    arr.reduce((r, t) => r + t.temperature, 0) / (arr.length || 1)
-  ).toFixed(0)
 
   return (
     <>

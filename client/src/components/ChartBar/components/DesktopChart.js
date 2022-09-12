@@ -1,8 +1,13 @@
-import {useState, useCallback} from 'react'
+import {useState, useCallback, useMemo} from 'react'
 import {BarChart, Bar, Cell, ResponsiveContainer} from 'recharts'
 
 const DesktopChart = ({arr, unit}) => {
   const [activeIndex, setActiveIndex] = useState(0)
+  const avg = useMemo(() => {
+    return (
+      arr.reduce((r, t) => r + t.temperature, 0) / (arr.length || 1)
+    ).toFixed(0) //Average temperature inside
+  })
   const setUnit = unit === 'celsius' ? `°C` : `°F`
 
   const handleClick = useCallback(
@@ -12,11 +17,6 @@ const DesktopChart = ({arr, unit}) => {
     [setActiveIndex]
   )
   const activeItem = arr[activeIndex]
-
-  //Average temperature inside
-  const avg = (
-    arr.reduce((r, t) => r + t.temperature, 0) / (arr.length || 1)
-  ).toFixed(0)
 
   return (
     <div className="ChartBar-main">
